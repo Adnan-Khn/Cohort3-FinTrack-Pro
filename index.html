@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinTrack Pro</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <section id="sidebar">
+        <div id="sidebar-head">
+          <div id="logo">
+            <i class="ri-database-2-fill"></i>
+            <div>
+              <h1>FinTrack Pro</h1>
+              <h6>Enterprise Finance</h6>
+            </div>
+          </div>
+          <div id="menu">
+            <div id="dashboardBtn" class="active">
+              <i class="ri-microsoft-fill"></i>
+              <h3>DashBoard</h3>
+            </div>
+            <div id="settingBtn">
+              <i class="ri-settings-2-fill"></i>
+              <h3>Settings</h3>
+            </div>
+          </div>
+        </div>
+        <div id="sidebar-footer">
+          <button>Add Transaction</button>
+        </div>
+      </section>
+      <section id="container">
+        <nav id="navbar">
+          <div id="user-details">
+            <span id="user-name">Adnan Khan</span>
+            <button id="logout">Logout</button>
+          </div>
+        </nav>
+        <section id="content">
+          <div id="content-1">
+            <div id="c1-text">
+              <h1>Financial Overview</h1>
+              <h6>Real-time tracking application</h6>
+            </div>
+            <div id="c1-details">
+              <div id="current-balance">
+                <div>
+                  <i class="ri-bank-fill"></i>
+                </div>
+                <h4>Current Balance</h4>
+                <h1 id="cb"></h1>
+              </div>
+              <div id="total-income">
+                <div>
+                  <i class="ri-signal-cellular-3-fill"></i>
+                </div>
+                <h4>Total Income</h4>
+                <h1 id="ti"></h1>
+              </div>
+              <div id="total-expense">
+                <div>
+                  <i class="ri-signal-cellular-3-fill"></i>
+                </div>
+                <h4>Total Expense</h4>
+                <h1 id="te"></h1>
+              </div>
+              <div id="total-transactions">
+                <div>
+                  <i class="ri-stacked-chart-fill"></i>
+                </div>
+                <h4>Total Transactions</h4>
+                <h1 id="tt"></h1>
+              </div>
+            </div>
+          </div>
+          <div id="content-2">
+            <div id="c2-right">
+              <div id="c2r-top">
+                <h2>Cash Flow Analysis</h2>
+                <div id="chart">
+                  <canvas id="myChart"></canvas>
+                </div>
+              </div>
+              <div id="c2r-bottom">
+                <h2>All Transactions</h2>
+                <div id="c2rb-search">
+                  <input type="text" placeholder="Search transactions..." />
+                  <select name="types" id="types">
+                    <option value="all">All Types</option>
+                    <option value="Income">Income Only</option>
+                    <option value="Expense">Expense Only</option>
+                  </select>
+                </div>
+                <div id="c2rb-table">
+                  <div id="c2rb-table-head">
+                    <h3>Date</h3>
+                    <h3>Description</h3>
+                    <h3>Category</h3>
+                    <h3>Amount</h3>
+                    <h3>Actions</h3>
+                  </div>
+                  <div id="c2rb-transactions"></div>
+                </div>
+              </div>
+            </div>
+            <div id="c2-left">
+              <h2>Preferences</h2>
+              <div id="dark">
+                <h4>Dark Mode</h4>
+                <label class="switch">
+                  <input type="checkbox" id="darkmode" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <button>Reset Button</button>
+            </div>
+          </div>
+        </section>
+        <section id="settings" class="hidden">
+          <div id="settings-header">
+            <h1>Settings</h1>
+            <h6>Manage your account profile and formatting</h6>
+          </div>
+          <form id="settings-card">
+            <h2>Profile Details</h2>
+            <div id="settings-form">
+              <div id="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" value="" />
+              </div>
+              <div id="form-group">
+                <label for="currency">Currency</label>
+                <select name="currency" id="currency">
+                  <option value="USD">USD($)</option>
+                  <option value="EUR">EUR(€)</option>
+                  <option value="GBP">GBP(£)</option>
+                  <option value="INR">INR(₹)</option>
+                  <option value="JPY">JPY(¥)</option>
+                </select>
+              </div>
+            </div>
+            <div class="settings-actions">
+              <button class="save-btn">Save Changes</button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+    <div id="overlay" class="hidden">
+      <div class="modal">
+        <div>
+          <h2>Add Transaction</h2>
+          <div>
+            <i class="ri-close-circle-fill" id="closeBtn"></i>
+          </div>
+        </div>
+        <form id="transactionForm">
+          <label for="type">Type</label>
+          <select id="type" required>
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+          <label for="description">Description</label>
+          <input type="text" id="description" placeholder="Description" />
+          <div id="amount-date">
+            <div>
+              <label for="amount">Amount</label>
+              <input type="number" id="amount" step="any" />
+            </div>
+
+            <div>
+              <label for="date">Date</label>
+              <input type="date" id="date" selected />
+            </div>
+          </div>
+          <label for="type">Category</label>
+          <select id="category" required>
+            <option value="" disabled selected>Select a category</option>
+            <option value="Salary">Salary</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Recharge & Bills">Recharge & Bills</option>
+            <option value="Food & Dining">Food & Dining</option>
+            <option value="Transport">Transport</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Other">Other</option>
+          </select>
+          <button type="submit" id="submitBtn">Add Transaction</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
