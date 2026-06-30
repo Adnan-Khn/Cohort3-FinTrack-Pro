@@ -73,6 +73,7 @@ main {
   flex-direction: column;
   gap: 15px;
   color: black;
+  text-shadow: 1px 1px 10px #ffffff;
 }
 #menu div {
   display: flex;
@@ -598,6 +599,6 @@ td {
   transform: translateY(0);
 }
 .active {
-  background-color: var(--success);
+  background-color: #13e8a1d4;
   color: white;
 }
